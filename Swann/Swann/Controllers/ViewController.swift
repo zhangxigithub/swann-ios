@@ -27,6 +27,7 @@ class ViewController: UIViewController {
 
             self.loadingIndicator.stopAnimating()
 
+            // Handle errors
             if let error = error {
                 let alert = UIAlertController(title: "Fetch error", message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
@@ -46,10 +47,12 @@ class ViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 return
             }
+            // If there is no error, load video player.
             self.videoPlayerScrollView.streamObject = streamObject
         }
     }
 
+    // Screen rotation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
       coordinator.animate(alongsideTransition: { _ in
       }) { [weak self] _ in
@@ -59,6 +62,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - VideoPlayerScrollViewDelegate
 extension ViewController: VideoPlayerScrollViewDelegate {
     func overlayStateChanged() {
         settingButton.isHidden = videoPlayerScrollView.overlayView.isHidden

@@ -7,10 +7,13 @@
 
 import Foundation
 
+// StreamObject is the response from server
 class StreamObject: Decodable {
-    let screen1: URL?
-    let screen2: URL?
-    let screen3: URL?
+    
+    // Make screen1 fileprivate and force developer use "streams"
+    fileprivate let screen1: URL?
+    fileprivate let screen2: URL?
+    fileprivate let screen3: URL?
 
     var streams: [URL] {
         var result = [URL]()

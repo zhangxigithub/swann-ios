@@ -22,6 +22,7 @@ class VideoPlayerScrollView: UIView {
     // scrollCanvas's with is equal to self.view.bounds.width * n
     var scrollCanvas: UIStackView!
 
+    // OverlayView contains pageControl
     var overlayView: UIView!
     var pageControl: UIPageControl!
 
@@ -46,21 +47,17 @@ class VideoPlayerScrollView: UIView {
         }
     }
 
-    // Adjust content size with "single width" * "count"
-    func adjustWidth() {
-        scrollCanvas.snp.updateConstraints { (make) in
-            make.width.equalTo(self.bounds.size.width * CGFloat(players.count))
-        }
-        let offset = self.bounds.size.width * CGFloat(pageControl.currentPage)
-        scrollView.contentOffset.x = offset
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapScreen(_:)))
-        self.addGestureRecognizer(tapGestureRecognizer)
-
+        /*
+         UI layout please check this image: demo/UI-Layer.jpeg
+        */
+        setupPlayerCanvas()
+        setupOverlayView()
+    }
+    
+    func setupPlayerCanvas() {
         scrollView = UIScrollView(frame: bounds)
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
@@ -79,7 +76,9 @@ class VideoPlayerScrollView: UIView {
           make.height.equalToSuperview()
           make.width.equalTo(0)
         }
-
+    }
+    
+    func setupOverlayView() {
         overlayView = UIView(frame: bounds)
         overlayView.isUserInteractionEnabled = false
         addSubview(overlayView)
@@ -95,15 +94,27 @@ class VideoPlayerScrollView: UIView {
             make.left.equalToSuperview()
             make.right.equalToSuperview()
         }
-      }
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapScreen(_:)))
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
 
     @objc func tapScreen(_ sender: Any) {
         overlayView.isHidden = !overlayView.isHidden
         delegate?.overlayStateChanged()
     }
+    
+    // Adjust content size with "single width" * "count"
+    func adjustWidth() {
+        scrollCanvas.snp.updateConstraints { (make) in
+            make.width.equalTo(self.bounds.size.width * CGFloat(players.count))
+        }
+        let offset = self.bounds.size.width * CGFloat(pageControl.currentPage)
+        scrollView.contentOffset.x = offset
+    }
 }
 
-// MARK: - play control
+// MARK: - Play control
 extension VideoPlayerScrollView {
     
     var currentPlayer: VideoPlayerView? {
@@ -130,6 +141,7 @@ extension VideoPlayerScrollView: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         pageControl.currentPage = scrollView.page
 
+        // Stop all players except the current one
         players.forEach {
             if $0 != currentPlayer {
                 $0.stop()

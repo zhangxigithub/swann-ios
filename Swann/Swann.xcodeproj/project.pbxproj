@@ -21,6 +21,7 @@
 		1FF40E39264DF3AA002584F7 /* StreamObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF40E38264DF3AA002584F7 /* StreamObject.swift */; };
 		1FF40E3E264DF511002584F7 /* StreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF40E3D264DF511002584F7 /* StreamManager.swift */; };
 		1FF40E40264E1A0B002584F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF40E3F264E1A0A002584F7 /* SettingsViewController.swift */; };
+		1FF40E42264E7D16002584F7 /* VideoPlayerView+Zoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF40E41264E7D16002584F7 /* VideoPlayerView+Zoom.swift */; };
 		4402C66C5CD213C7375B8369 /* Pods_Swann.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A90C26B7D10845681FB97A9F /* Pods_Swann.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		1FF40E38264DF3AA002584F7 /* StreamObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamObject.swift; sourceTree = "<group>"; };
 		1FF40E3D264DF511002584F7 /* StreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamManager.swift; sourceTree = "<group>"; };
 		1FF40E3F264E1A0A002584F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1FF40E41264E7D16002584F7 /* VideoPlayerView+Zoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoPlayerView+Zoom.swift"; sourceTree = "<group>"; };
 		3CBF2E6079A7CC14BD84C7BA /* Pods-Swann.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swann.debug.xcconfig"; path = "Target Support Files/Pods-Swann/Pods-Swann.debug.xcconfig"; sourceTree = "<group>"; };
 		42983602EF8CEEFA1721A848 /* Pods-SwannTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwannTests.debug.xcconfig"; path = "Target Support Files/Pods-SwannTests/Pods-SwannTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5AAB23D5E80040F5270B0806 /* Pods_SwannTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwannTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,7 @@
 		1FF40E01264DF08D002584F7 /* Swann */ = {
 			isa = PBXGroup;
 			children = (
+				1FF40E10264DF08E002584F7 /* Info.plist */,
 				1FF40E02264DF08D002584F7 /* AppDelegate.swift */,
 				1FF40E04264DF08D002584F7 /* SceneDelegate.swift */,
 				1FF40E3C264DF4FE002584F7 /* Controllers */,
@@ -128,7 +131,6 @@
 				1FF40E3A264DF4CF002584F7 /* Storyboards */,
 				1FF40E37264DF373002584F7 /* Models */,
 				1FF40E32264DF2CA002584F7 /* Views */,
-				1FF40E10264DF08E002584F7 /* Info.plist */,
 			);
 			path = Swann;
 			sourceTree = "<group>";
@@ -156,6 +158,7 @@
 			children = (
 				1FF40E33264DF30F002584F7 /* VideoPlayerScrollView.swift */,
 				1FF40E35264DF31C002584F7 /* VideoPlayerView.swift */,
+				1FF40E41264E7D16002584F7 /* VideoPlayerView+Zoom.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				1FF40E39264DF3AA002584F7 /* StreamObject.swift in Sources */,
 				1FF40E34264DF30F002584F7 /* VideoPlayerScrollView.swift in Sources */,
 				1FF40E07264DF08D002584F7 /* ViewController.swift in Sources */,
+				1FF40E42264E7D16002584F7 /* VideoPlayerView+Zoom.swift in Sources */,
 				1FF40E3E264DF511002584F7 /* StreamManager.swift in Sources */,
 				1FF40E03264DF08D002584F7 /* AppDelegate.swift in Sources */,
 				1FF40E05264DF08D002584F7 /* SceneDelegate.swift in Sources */,

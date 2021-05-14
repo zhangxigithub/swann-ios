@@ -5,8 +5,9 @@
 //  Created by sid on 14/5/21.
 //
 
-import Foundation
+import UIKit
 import AVKit
+import SnapKit
 
 class VideoPlayerView: UIView {
 
@@ -15,6 +16,7 @@ class VideoPlayerView: UIView {
 
     init(frame: CGRect, streamURL: URL) {
         super.init(frame: frame)
+        clipsToBounds = true
 
         self.player = AVPlayer(url: streamURL)
         playerViewController.player = player
@@ -26,12 +28,14 @@ class VideoPlayerView: UIView {
                 make.edges.equalToSuperview()
             })
         }
+        enableZoom()
     }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
-    // MARK: - play control
+    // MARK: - Play control
     func playOrPause() {
         if isPlaying {
             stop()
@@ -49,6 +53,7 @@ class VideoPlayerView: UIView {
     }
 
     func stop() {
+        resetZoom()
         player.pause()
     }
 }

@@ -1,0 +1,14 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '13.0'
+
+target 'Swann' do
+  use_frameworks!
+
+  pod 'Alamofire'
+  pod 'SnapKit'
+
+   target 'SwannTests' do
+        inherit! :search_paths
+    end
+
+end
